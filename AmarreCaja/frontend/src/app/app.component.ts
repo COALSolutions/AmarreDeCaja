@@ -162,6 +162,8 @@ export class AppComponent implements OnInit, OnDestroy {
         } else if (queryP.indexOf('usuarioBpro') >= 0) {
             // this.router.navigate(['login']);
             this.router.navigateByUrl(`/login?${queryP}`);
+        } else {
+            this.router.navigate(['login']);
         }
 
         // const validaLogin = window.location.pathname.split('/');

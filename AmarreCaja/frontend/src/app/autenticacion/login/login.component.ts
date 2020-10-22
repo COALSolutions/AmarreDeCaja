@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   private dbSeguridad: NgxIndexedDB;
   spinner = false;
+  usuarioBpro: any;
 
   constructor(private store: Store<AppState>,
     private _fuseConfigService: FuseConfigService,
@@ -115,9 +116,9 @@ export class LoginComponent implements OnInit {
       }
     });
     this.activatedRoute.queryParams.subscribe(params => {
-      const usuarioBpro = params.usuarioBpro;
-      if (usuarioBpro) {
-        this.LogIn(usuarioBpro)
+      this.usuarioBpro = params.usuarioBpro;
+      if (this.usuarioBpro) {
+        this.LogIn(this.usuarioBpro)
       }
     })
 
