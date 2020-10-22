@@ -1,0 +1,121 @@
+<app-spinner-utileria *ngIf='spinner'></app-spinner-utileria>
+<div class='containerAll'>
+    <!-- <app-breadcrumbs [ruta]="breadcrumb"></app-breadcrumbs> -->
+    <mat-card class="cardMarginBottom">
+        <div class='row'>
+            <div class="col-sm-12 col-md-12 col-xl-12">
+                <mat-form-field class='flotanteDerecha'>
+                    <mat-label>Consultar otro día</mat-label>
+                    <input matInput [matDatepicker]="dp3" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12 col-md-12 col-xl-12 text-center'>
+                <h1>Amarre de caja</h1>
+                <p>{{[fechaHoy]}}</p>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12 col-md-4 col-xl-4'>
+                <span>
+                    <mat-form-field class="inputFullWide">
+                        <mat-select placeholder='Selecciona un distribuidor' [formControl]="toppings" multiple>
+                            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </span>
+            </div>
+        </div>
+
+        <div class='cardMarginBottom'>
+            <div class='row m-2 bordes'>
+                <span>&nbsp;&nbsp;INGRESOS PENDIENTES POR DEPOSITAR DE DIAS ANTERIORES</span>
+            </div>
+            <!-- <app-grid-component [datos]="primerosDatos" [columns]="columns" [exportExcel]="exportExcel"
+                [columnHiding]="columnHiding" [Checkbox]="Checkbox" [Editing]="Editing" [Columnchooser]="Columnchooser"
+                [searchPanel]="searchPanel" [scroll]="scroll" (messageEvent)="receiveMessage($event)"
+                (datosevent)='datosMessage($event)' [toolbar]="toolbar">
+            </app-grid-component> -->
+
+            <dx-data-grid class='m-2' [dataSource]="primerosDatos" [columns]="columns" [showBorders]="true">
+            </dx-data-grid>
+            <div class='row m-1 '>
+                <span>SALDO CONTABLE INICIAL DE CAJA</span>
+            </div>
+        </div>
+        <hr>
+        <div class='cardMarginBottom'>
+            <div class='row m-2 bordes'>
+                <span>&nbsp;&nbsp;INGRESOS PENDIENTES POR DEPOSITAR DEL DÍA DE HOY</span>
+            </div>
+            <dx-data-grid class='m-2' [dataSource]="primerosDatos" [columns]="columns" [showBorders]="true">
+            </dx-data-grid>
+            <div class='row m-1 '>
+                <span>TOTAL INGRESOS CORTE DE CAJA</span>
+            </div>
+        </div>
+
+        <hr>
+        <div class='cardMarginBottom'>
+            <div class='bordes'>
+                <div class='ml-3 mr-3'>
+                    <div class='row mt-4'>
+                        <div class='col-6'>
+                            <span>TOTAL INGRESADO HOY A BANCOS POR CAJA</span>
+                        </div>
+                        <div class='col-2'></div>
+                        <div class='col-2 text-center'> 35.497,95 </div>
+                        <div class='col-2'></div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-6'>
+                            <span>SALDO TOTAL INGS POR DEPOSITAR</span>
+                        </div>
+                        <div class='col-2'></div>
+                        <div class='col-2'></div>
+                        <div class='col-2 text-center'> 201.306,93 </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-6'>
+                            <span>SALDO CONTABLE FINAL DE CAJA</span>
+                        </div>
+                        <div class='col-2 text-center'>135.405,96</div>
+                        <div class='col-2 text-center'>35.497,95</div>
+                        <div class='col-2 text-center'>201.306,93</div>
+                    </div>
+                    <div class='row mb-4'>
+                        <div class='col-6'>
+                            <span>DIFERENCIA CONTABLE DE CAJA</span>
+                        </div>
+                        <div class='col-2 text-center'>0.00</div>
+                        <div class='col-2 text-center'>0.00</div>
+                        <div class='col-2 text-center'>0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='cardMarginBottom'>
+            <div class='row m-2 bordes'>
+                <span>&nbsp;&nbsp;IMPORTES PENDIENTES POR CONTABILIZAR</span>
+            </div>
+            <dx-data-grid class='m-2' [dataSource]="primerosDatos" [columns]="columns" [showBorders]="true">
+            </dx-data-grid>
+        </div>
+
+        <div class='cardMarginBottom'>
+            <div class='row m-2'>
+                <span>&nbsp;&nbsp;COMENTARIOS</span>
+            </div>
+            <textarea disabled class="form-control" rows="10"
+                style="background-color: white; overflow:auto;resize:none;"> </textarea>
+        </div>
+    </mat-card>
+
+
+</div>

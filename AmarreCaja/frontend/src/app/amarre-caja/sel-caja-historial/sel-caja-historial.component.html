@@ -1,0 +1,42 @@
+<app-spinner-utileria *ngIf='spinner'></app-spinner-utileria>
+<div class='containerAll'>
+    <mat-card [ngClass]="{'desactivaPantalla': spinner }">
+        <div class="col-sm-12 col-md-12 col-xl-12">
+            <img class='imagenIconoGris' src="./assets/images/iconos-coal/usuario/sel-usuario.png">&nbsp;&nbsp;&nbsp;
+            <span>Historial de amarre de caja</span>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-xl-3">
+                <mat-form-field id="blueversion" class="inputFullWide">
+                    <mat-select placeholder="Seleccione distribuidor" (selectionChange)="change($event.value)">
+                        <mat-option id="bluemat" *ngFor='let distribuidor of distribuidores' [value]="distribuidor">
+                            {{distribuidorl}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        El campo es
+                        <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-3 col-xl-3">
+                <mat-form-field style="width: 100%">
+                    <input matInput [matDatepicker]="picker" [disabled]="" (ngModelChange)="validaFecha($event);"
+                        [ngModel]="fecha" placeholder="Seleccione fecha">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row marginTop">
+            <div class="col-sm-12 col-md-12 col-xl-12">
+                <app-grid-component [datos]="caja" [columns]="columns" [exportExcel]="exportExcel"
+                    [columnHiding]="columnHiding" [Checkbox]="Checkbox" [Editing]="Editing"
+                    [Columnchooser]="Columnchooser" [searchPanel]="searchPanel" [scroll]="scroll"
+                    (messageEvent)="receiveMessage($event)" (datosevent)='datosMessage($event)' [toolbar]="toolbar">
+                </app-grid-component>
+            </div>
+        </div>
+    </mat-card>
+</div>
