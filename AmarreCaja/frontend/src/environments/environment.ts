@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://54.68.19.8:5020/',
-  seguridadUrl: 'http://54.68.19.8:5001/',
+  serviceUrl: 'http://localhost:5020/',
+  seguridadUrl: 'http://localhost:5001/',
   aplicacionesId: 2,
   excepcionUrl: 'http://54.68.19.8:5030/',
   fileServerUrl: 'http://54.68.19.8:5010/',
