@@ -1,4 +1,4 @@
-<div class="navbar-top" [ngClass]="fuseConfig.layout.navbar.secondaryBackground">
+<div class="navbar-top" [ngClass]="fuseConfig.layout.navbar.secondaryBackground" style="background-color: #001A5A !important ;">
 
     <div class="logo">
         <img class="logo-icon" src="assets/images/iconos-coal/icono_A.png">
@@ -21,19 +21,19 @@
 
 
 <div class="navbar-scroll-container" [ngClass]="fuseConfig.layout.navbar.primaryBackground" fusePerfectScrollbar
-    [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
+    [fusePerfectScrollbarOptions]="{suppressScrollX: true}" >
 
-    <div class="user" fxLayout="column" [ngClass]="fuseConfig.layout.navbar.secondaryBackground">
+    <div class="user" fxLayout="column" [ngClass]="fuseConfig.layout.navbar.secondaryBackground" style="background-color: #001A5A !important ;">
 
         <div class="h3 username">{{datosUsuario?.fullname}}</div>
         <div class="h5 email hint-text mt-8">{{datosUsuario?.email}}</div>
-        <div class="avatar-container" [ngClass]="fuseConfig.layout.navbar.primaryBackground">
+        <div class="avatar-container" [ngClass]="fuseConfig.layout.navbar.primaryBackground" style="background-color: #001A5A !important ;">
             <img class="avatar" src="{{datosUsuario?.avatar}}">
         </div>
 
     </div>
 
-    <div class="navbar-content">
+    <div class="navbar-content" style="background-color: #1C3B7B !important ;">
         <fuse-navigation *ngIf='objSeguridad.length > 0' [navigation]='objSeguridad' class="material2" layout="vertical"></fuse-navigation>
     </div>
 
