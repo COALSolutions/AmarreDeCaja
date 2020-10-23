@@ -31,7 +31,7 @@
         </div>
         <div class="row marginTop">
             <div class="col-sm-12 col-md-12 col-xl-12">
-                <app-grid-component [datos]="caja" [columns]="columns" [exportExcel]="exportExcel"
+                <app-grid-component [datos]="historialCaja" [columns]="columns" [exportExcel]="exportExcel"
                     [columnHiding]="columnHiding" [Checkbox]="Checkbox" [Editing]="Editing"
                     [Columnchooser]="Columnchooser" [searchPanel]="searchPanel" [scroll]="scroll"
                     (messageEvent)="receiveMessage($event)" (datosevent)='datosMessage($event)' [toolbar]="toolbar">
