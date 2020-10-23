@@ -26,6 +26,7 @@ import { ExcepcionesComponent } from '../../../app/utilerias/excepciones/excepci
 import { AsignaBreadcrumb } from 'app/store/actions/permisos.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from 'app/store/app.states';
+import { AlertDialogComponent } from 'app/utilerias/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-sel-caja-historial',
@@ -104,6 +105,26 @@ export class SelCajaHistorialComponent implements OnInit {
   datosMessage($event) {
     try {
       this.datosevent = $event.data;
+    } catch (error) {
+      this.Excepciones(error, 1);
+    }
+  }
+
+  Alerta() {
+    this.AlertDialog('Por favor de verificar');
+  }
+
+
+  AlertDialog(message: string) {
+    try {
+      const dialogRef = this.dialog.open(AlertDialogComponent, {
+        width: '500px',
+        data: {
+          message
+        }
+      });
+
+      dialogRef.afterClosed().subscribe((result: any) => { });
     } catch (error) {
       this.Excepciones(error, 1);
     }
