@@ -1,26 +1,4 @@
-<!-- <div class="app-page-title">
-  <div class="row page-title-wrapper">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 page-title-heading">
-      <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
-        <div class="page-title-icon">
-          <i class="icon"> <img class="imagenLogo " src="{{rutaIcono.path}}"></i>
-        </div>
-      </div>
-      <div class="migajas col-xs-12 col-sm-12 col-md-10 col-lg-8" *ngIf="rutasHijas">
-        <p class='header'>{{labelActivo}}</p>
-        <a *ngFor="let breadcrumb of rutasHijas" [routerLink]="[breadcrumb.url]" class="subHeading">
-          <i *ngIf="breadcrumb.label ==''" aria-hidden="true">
-            <mat-icon class="length-icon s-10">home</mat-icon>
-          </i> {{breadcrumb.label}}
-        </a>
-        <label class="linkActivo"> / {{labelActivo}}
-        </label>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div class="migajas col-xs-12 col-sm-12 col-md-10 col-lg-8" *ngIf="rutasHijas">
+<div class="linebreadcrumb" *ngIf="rutasHijas">
   <ul class='breadcrumbs'>
     <li *ngFor="let breadcrumb of rutasHijas">
       <a [routerLink]="[breadcrumb.url]" class="subHeading">

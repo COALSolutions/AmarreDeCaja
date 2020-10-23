@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 
 import { SessionInitializer } from '../../../services/session-initializer';
 import { BaseService } from '../../../../app/services/base.service';
+import { Store } from '@ngrx/store';
+import { AppState, selectPermisosState } from 'app/store/app.states';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'toolbar',
@@ -31,6 +34,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     state: any;
     objSeguridad: any[];
 
+    getState: Observable<any>;
+    subsAuth: Subscription;
+    breadcrumb: any;
+
+
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -48,7 +56,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         private router: Router,
         private sessionInitializer: SessionInitializer,
         private baseService: BaseService,
+        private store: Store<AppState>
     ) {
+
+        this.getState = this.store.select(selectPermisosState);
+
         // Set the defaults
         this.userStatusOptions = [
             {
@@ -105,6 +117,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+
+        this.subsAuth = this.getState.subscribe((state) => {
+            this.breadcrumb = state.breadcrumb;
+        })
+
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
