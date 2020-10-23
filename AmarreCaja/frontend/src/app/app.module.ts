@@ -35,6 +35,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 // ***** UTILERIAS *****
 import { GridComponentComponent } from './utilerias/grid-component/grid-component.component';
+import { AlertDialogComponent } from './utilerias/alert-dialog/alert-dialog.component';
 
 /********************REDUX *********************/
 import { rootReducer, ArchitectUIState } from './themeOptions/store';
@@ -151,11 +152,13 @@ export function sessionInitializerProviderFactory(
         SpinnerUtileriaComponent,
         CargaMasivaComponent,
         InsCajaComponent,
-        SelCajaHistorialComponent
+        SelCajaHistorialComponent,
+        AlertDialogComponent
     ],
     entryComponents: [
         ExcepcionesComponent,
-        DeleteAlertComponent
+        DeleteAlertComponent,
+        AlertDialogComponent
       ],
     imports: [
         BrowserModule,
