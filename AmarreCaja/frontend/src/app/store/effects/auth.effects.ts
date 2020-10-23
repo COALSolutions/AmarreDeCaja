@@ -17,6 +17,7 @@ import { AppState, selectPermisosState } from '../app.states';
 import { CoalService } from '../../services/coal.service';
 import { SessionInitializer } from '../../services/session-initializer';
 import { TokenService } from '../../services/token.service';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable()
@@ -43,7 +44,7 @@ export class AuthEffects {
         public sessionInitializer: SessionInitializer,
         public tokenService: TokenService
     ) {
-        this.db = new NgxIndexedDB('COAL', 1);
+        this.db = new NgxIndexedDB(environment.nombreAplicacion, 1);
         this.store.select(selectPermisosState);
     }
 

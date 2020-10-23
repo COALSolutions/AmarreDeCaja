@@ -16,7 +16,7 @@ export class AuthService {
      * @author                Antonio Guerra
      */
     constructor(private httpClient: HttpClient, protected tokenService: TokenService) {
-        this.db = new NgxIndexedDB('COAL', 1);
+        this.db = new NgxIndexedDB(environment.nombreAplicacion, 1);
     }
     /**
      * @description         Método para inicio de sesión del usuario

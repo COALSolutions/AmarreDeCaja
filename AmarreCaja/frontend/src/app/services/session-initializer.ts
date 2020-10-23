@@ -10,6 +10,7 @@ import { LogOut, SetAuth } from '../store/actions/auth.actions';
 import { EliminaPermisos, AsignaPermisos } from '../store/actions/permisos.actions';
 import { TokenService } from './token.service';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SessionInitializer {
@@ -24,7 +25,7 @@ export class SessionInitializer {
         private authService: AuthService) {
         this.getState = this.store.select(selectAuthState);
         this.getStatePermisos = this.store.select(selectPermisosState);
-        this.indexedDB = new NgxIndexedDB('COAL', 1);
+        this.indexedDB = new NgxIndexedDB(environment.nombreAplicacion, 1);
         this.createOBS();
     }
 

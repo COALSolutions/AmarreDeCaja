@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     if (!firebase.apps.length) {
       firebase.initializeApp(environment.firebase);
     }
-    this.dbSeguridad = new NgxIndexedDB('COAL', 1);
+    this.dbSeguridad = new NgxIndexedDB(environment.nombreAplicacion, 1);
     // Configure the layout
     this._fuseConfigService.config = {
       layout: {

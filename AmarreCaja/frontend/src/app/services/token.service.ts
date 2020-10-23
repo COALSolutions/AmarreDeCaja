@@ -4,6 +4,7 @@ import { UpdateData } from '../store/actions/auth.actions';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { NgxIndexedDB } from 'ngx-indexed-db';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,7 @@ export class TokenService {
       avatar: newUserData.avatar
     };
     this.store.dispatch(new UpdateData(actualUserData));
-    this.indexedDB = new NgxIndexedDB('COAL', 1);
+    this.indexedDB = new NgxIndexedDB(environment.nombreAplicacion, 1);
     this.indexedDB.openDatabase(1).then(() => {
       this.indexedDB.getByKey('seguridad', 1).then(resultado => {
         this.indexedDB.update('seguridad', {

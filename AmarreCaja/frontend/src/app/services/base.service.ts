@@ -17,7 +17,7 @@ export class BaseService {
 
   constructor(private store: Store<AppState>) {
     this.stateReduxStore();
-    this.idxCOAL = new NgxIndexedDB('COAL', 1);
+    this.idxCOAL = new NgxIndexedDB(environment.nombreAplicacion, 1);
   }
 
   private stateReduxStore() {
