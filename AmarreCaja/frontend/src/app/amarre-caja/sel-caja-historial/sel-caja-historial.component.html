@@ -29,7 +29,7 @@
                 </mat-form-field>
             </div>
         </div>
-        <div class="row marginTop">
+        <div class="row marginTop cardMarginBottom">
             <div class="col-sm-12 col-md-12 col-xl-12">
                 <app-grid-component [datos]="historialCaja" [columns]="columns" [exportExcel]="exportExcel"
                     [columnHiding]="columnHiding" [Checkbox]="Checkbox" [Editing]="Editing"
@@ -38,10 +38,11 @@
                 </app-grid-component>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-xl-12">
+                <button class="flotanteDerecha accent" mat-raised-button type="button"
+                    (click)='Alerta()'>Alerta</button>
+            </div>
+        </div>
     </mat-card>
-
-    <div>
-        <button class="flotanteDerecha accent-900" mat-raised-button type="button"
-            (click)='Alerta()'>Alerta</button>
-    </div>
 </div>
