@@ -5,6 +5,7 @@ toolbar {
     display: flex;
     flex: 0 0 auto;
     z-index: 4;
+    height: 95px;
 
     &.below {
         z-index: 2;
