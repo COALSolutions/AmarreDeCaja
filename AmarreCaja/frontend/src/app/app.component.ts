@@ -152,8 +152,6 @@ export class AppComponent implements OnInit, OnDestroy {
     //valida que sea reset de password
     private validateLogin() {
         const queryP = window.location.search.substring(1);
-        // const parsed_qs = this.parse_query_string(queryP);
-        console.log('dkjhfkashdlsan', queryP)
         const arrayData = window.location.href.split('/');
         if (this.sessionInitializer.state) {
             this.getDataRedux();
@@ -165,17 +163,6 @@ export class AppComponent implements OnInit, OnDestroy {
         } else {
             this.router.navigate(['login']);
         }
-
-        // const validaLogin = window.location.pathname.split('/');
-        // const arrayData = window.location.href.split('/');
-        // if (this.sessionInitializer.state) {
-        //     this.getDataRedux();
-        // } else if (arrayData[3] === 'upd-password') {
-        //     this.router.navigate([`upd-password/${arrayData[4]}`]);
-        // } else if (validaLogin.find(x => x === 'login')) {
-        //     // this.router.navigate(['login']);
-        //     this.router.navigateByUrl(`/login/${validaLogin[validaLogin.length - 1]}`);
-        // }
     }
 
     parse_query_string(query) {
