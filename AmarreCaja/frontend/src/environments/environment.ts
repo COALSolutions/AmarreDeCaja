@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://localhost:5020/',
-  seguridadUrl: 'http://localhost:5001/',
+  serviceUrl: 'http://54.68.19.8:6010/',
+  seguridadUrl: 'http://54.68.19.8:6000/',
   aplicacionesId: 2,
-  excepcionUrl: 'http://54.68.19.8:5030/',
-  fileServerUrl: 'http://54.68.19.8:5010/',
+  excepcionUrl: 'http://54.68.19.8:6001/',
+  fileServerUrl: 'http://54.68.19.8:6002/',
   firebase: {
       apiKey: 'AIzaSyDajrY7AZrgmno4EiqlWG_dd5xts6xNeHI',
       authDomain: 'coal-dc26f.firebaseapp.com',
