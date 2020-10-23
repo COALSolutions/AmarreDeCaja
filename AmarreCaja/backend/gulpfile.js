@@ -64,7 +64,6 @@ gulp.task('serverTRAINING', ['build'], function () {
     }).on('restart', ['build']);
 });
 
-
 gulp.task('serverProd', ['build'], function () {
     process.env.NODE_ENV = "production";
     nodemon({

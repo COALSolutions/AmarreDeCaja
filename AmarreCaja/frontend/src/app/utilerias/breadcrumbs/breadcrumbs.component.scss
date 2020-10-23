@@ -34,7 +34,7 @@ a {
             box-shadow: -1px 1px 0 rgba(0,0,0,0.3);
         };
         &:first-child {
-            border-radius: 4px 0 0 4px;
+            border-radius: 0px 0 0 0px;
         };
         &:first-child:before {
             content: none;
@@ -47,4 +47,11 @@ a {
             color: #fff;
         };
     }
+}
+
+.linebreadcrumb {
+    position: absolute;
+    top: 64px;
+    z-index: 1;
+    left: 0px;
 }

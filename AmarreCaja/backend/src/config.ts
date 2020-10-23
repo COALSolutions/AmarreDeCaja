@@ -1,17 +1,17 @@
 export default {
     "development":
     {
-        "port": 5020,
+        "port": 6010,
         "seguridad": {
             "host": "54.68.19.8",
-            "port": 5001,
+            "port": 6000,
             "method": "POST",
             "headers": {
                 "Content-Type": "multipart/form-data"
             },
             "protocolo": "http"
         },
-        "aplicacionId": 1
+        "aplicacionId": 2
       
     },
     "production": {

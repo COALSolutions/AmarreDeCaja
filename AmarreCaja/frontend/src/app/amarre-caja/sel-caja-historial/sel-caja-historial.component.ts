@@ -57,6 +57,7 @@ export class SelCajaHistorialComponent implements OnInit {
 
   distribuidores = [];
   fecha: string;
+  historialCaja = [];
 
   constructor(
     public dialog: MatDialog,
@@ -127,23 +128,28 @@ export class SelCajaHistorialComponent implements OnInit {
         },
         {
           caption: 'Total banco',
-          dataField: 'totalBanco'
+          dataField: 'totalBanco',
+          format: TiposdeFormato.moneda
         },
         {
           caption: 'Total a depositar',
-          dataField: 'totalDepositar'
+          dataField: 'totalDepositar',
+          format: TiposdeFormato.moneda
         },
         {
           caption: 'Saldo contable final',
-          dataField: 'saldoContable'
+          dataField: 'saldoFinal',
+          format: TiposdeFormato.moneda
         },
         {
           caption: 'Diferencia',
-          dataField: 'diferencia'
+          dataField: 'diferencia',
+          format: TiposdeFormato.moneda
         },
         {
           caption: 'Importes por contablizar',
-          dataField: 'importesContabilizar'
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
         }
       ];
 
@@ -202,22 +208,22 @@ export class SelCajaHistorialComponent implements OnInit {
   }
 
   LoadData() {
-    // this.spinner = true;
-    // this.coalService.getService(`seguridad/getUsuariosSeguridad?aplicacionId=${environment.aplicacionesId}`).subscribe(
-    //   (res: any) => {
-    //     if (res.err) {
-    //       this.Excepciones(res.err, 4);
-    //     } else if (res.excepcion) {
-    //       this.Excepciones(res.excepcion, 3);
-    //     } else {
-    //       this.usuarios = res.recordsets[0];
-    //     }
-    //     this.spinner = false
-    //   }, (error: any) => {
-    //     this.Excepciones(error, 2);
-    //     this.spinner = false
-    //   }
-    // )
+    this.spinner = true;
+    this.coalService.getService(`caja/GetHistorialCaja`).subscribe(
+      (res: any) => {
+        if (res.err) {
+          this.Excepciones(res.err, 4);
+        } else if (res.excepcion) {
+          this.Excepciones(res.excepcion, 3);
+        } else {
+          this.historialCaja = res.recordsets[0];
+        }
+        this.spinner = false
+      }, (error: any) => {
+        this.Excepciones(error, 2);
+        this.spinner = false
+      }
+    )
   }
 
   verCaja() {

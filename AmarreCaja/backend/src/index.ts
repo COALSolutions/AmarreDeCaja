@@ -11,6 +11,10 @@ import { SeguridadRepository } from './repository/seguridad.repository';
 import { SeguridadController } from './controllers/seguridad.controller';
 Container.get(SeguridadRepository);
 
+import { AmarreCajaRepository } from './repository/amarreCaja.repository';
+import { AmarreCajaController } from './controllers/amarreCaja.controller';
+Container.get(AmarreCajaRepository);
+
 
 global.UserId = 3;
 //obtenemos el puerto del conf
@@ -26,7 +30,8 @@ useContainer(Container);
 let app = createExpressServer({
     cors: true,
     controllers: [ // Cada uno de los controlests de arriba
-        SeguridadController
+        SeguridadController,
+        AmarreCajaController
     ],
     middlewares: [SeguridadMiddleware]
 });
