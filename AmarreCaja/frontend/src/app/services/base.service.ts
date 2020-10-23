@@ -4,6 +4,7 @@ import { AppState, selectAuthState, selectPermisosState } from '../store/app.sta
 import { Store } from '@ngrx/store';
 import { NgxIndexedDB } from 'ngx-indexed-db';
 import { defer, IPromise } from 'q';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
