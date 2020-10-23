@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash-es';
@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 
 import { SessionInitializer } from '../../../services/session-initializer';
 import { BaseService } from '../../../../app/services/base.service';
-import { AppState, selectPermisosState } from 'app/store/app.states';
-import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'toolbar',
@@ -32,12 +30,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     datosUsuario: any;
     state: any;
     objSeguridad: any[];
-    getState: Observable<any>;
-    subsAuth: Subscription;
 
     // Private
     private _unsubscribeAll: Subject<any>;
-    breadcrumb: any;
 
     /**
      * Constructor
@@ -53,9 +48,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         private router: Router,
         private sessionInitializer: SessionInitializer,
         private baseService: BaseService,
-        private store: Store<AppState>,
     ) {
-        this.getState = this.store.select(selectPermisosState);
         // Set the defaults
         this.userStatusOptions = [
             {
@@ -112,9 +105,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
-        this.subsAuth = this.getState.subscribe((state) => {
-            this.breadcrumb = state.breadcrumb;
-        })
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
