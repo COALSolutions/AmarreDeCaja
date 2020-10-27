@@ -10,16 +10,19 @@ export class AmarreCajaRepository {
     query: any;
 
     constructor() {
-        const database = 'AmarreCaja'
         const env: string = process.env.NODE_ENV || 'development';
         this.conf = (config as any)[env]; // ejemplo de llamada al confg.js
-        this.query = new Query(database);
+        this.query = new Query();
     }
 
     // ************ SERVICIOS GET ************
     
     GetHistorialCaja(query: any): PromiseLike<{}> {
         return this.query.spExecute(query, "[caja].[SEL_AMARRECAJA_SP]")
+    }
+
+    GetSucursales(query: any): PromiseLike<{}> {
+        return this.query.spExecute(query, "[bpro].[SEL_SUCURSALES_SP]")
     }
 
     // ************* TERMINA GET *************

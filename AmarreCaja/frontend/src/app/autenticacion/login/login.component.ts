@@ -173,7 +173,7 @@ export class LoginComponent implements OnInit {
 
   async GetServiceSeguridad(body?: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpClient.post(environment.seguridadUrl + 'api/user/userBPRO', body, { headers });
+    return this.httpClient.post(environment.seguridadUrl + 'seguridad/userBPRO', body, { headers });
   }
 
   async CodeAuth(code: any) {

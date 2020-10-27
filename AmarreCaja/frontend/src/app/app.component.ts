@@ -153,7 +153,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private validateLogin() {
         const queryP = window.location.search.substring(1);
         // const parsed_qs = this.parse_query_string(queryP);
-        console.log('dkjhfkashdlsan', queryP)
         const arrayData = window.location.href.split('/');
         if (this.sessionInitializer.state) {
             this.getDataRedux();

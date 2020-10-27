@@ -10,11 +10,7 @@ import { global } from 'core-js';
  * 
  */
 export class Query {
-    constructor(public dataBase: string) {
-        confDB.development["database"] = dataBase
-        confDB.qa["database"] = dataBase;
-        confDB.training["database"] = dataBase;
-        confDB.production["database"] = dataBase;
+    constructor() {
     }
 
     private dbConnect(callback: Function): Q.IPromise<{}> {

@@ -24,8 +24,8 @@
             <div class='col-sm-12 col-md-4 col-xl-4'>
                 <span>
                     <mat-form-field class="inputFullWide">
-                        <mat-select placeholder='Selecciona un distribuidor' [formControl]="toppings" multiple>
-                            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                        <mat-select placeholder='Selecciona una sucursal'  (selectionChange)="CargaAnticipo($event.value)">
+                            <mat-option *ngFor="let sucursal of sucursalesList" [value]="sucursal.suc_idsucursal">{{sucursal.suc_nombre}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </span>

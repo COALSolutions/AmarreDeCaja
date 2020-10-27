@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CoalService } from '../../services/coal.service';
-import { environment } from '../../../environments/environment';
 import {
   IGridOptions,
   IColumns,
@@ -21,7 +20,6 @@ import { Observable } from 'rxjs';
 import { BaseService } from '../../../app/services/base.service';
 import { Datos } from '../../models/datos.model'
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteAlertComponent } from '../../../app/utilerias/delete-alert/delete-alert.component';
 import { ExcepcionesComponent } from '../../../app/utilerias/excepciones/excepciones.component';
 import { AsignaBreadcrumb } from 'app/store/actions/permisos.actions';
 import { Store } from '@ngrx/store';
@@ -90,10 +88,17 @@ export class SelCajaHistorialComponent implements OnInit {
       this.evento = $event.event;
       if ($event === 'ver') {
         this.verCaja();
+      }else if ($event === 'crear'){
+        this.crearCaja();
       }
     } catch (error) {
       this.Excepciones(error, 1);
     }
+  }
+
+  crearCaja() {
+    this.router.navigateByUrl('/ins-caja');
+
   }
 
   /**
@@ -217,6 +222,22 @@ export class SelCajaHistorialComponent implements OnInit {
               width: 90,
               text: 'Ver',
               onClick: this.receiveMessage.bind(this, 'ver')
+            },
+            visible: true
+          }
+        );
+      }
+
+      if (this.modulo.camposClase.find(x => x.nombre === 'crearCaja')) {
+        this.toolbar.push(
+          {
+            location: 'after',
+            widget: 'dxButton',
+            locateInMenu: 'auto',
+            options: {
+              width: 90,
+              text: 'Crear',
+              onClick: this.receiveMessage.bind(this, 'crear')
             },
             visible: true
           }

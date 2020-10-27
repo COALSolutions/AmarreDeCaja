@@ -4,7 +4,7 @@ export default {
         "user": "sa",
         "password": "S0p0rt3",
         "port": 1433,
-        "database": "",
+        "database": "AmarreCaja",
         "connectionTimeout": 180000,
         "requestTimeout": 180000
     },

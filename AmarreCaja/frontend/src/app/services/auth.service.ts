@@ -28,7 +28,7 @@ export class AuthService {
     Login(user: string, pass: string): Observable<any> {
         let params = {};
         params = { credenciales: { email: user, password: pass }, aplicacion: environment.aplicacionesId };
-        return this.httpClient.post(environment.seguridadUrl + 'api/auth/Login', params);
+        return this.httpClient.post(environment.seguridadUrl + 'seguridad/Login', params);
     }
 
     /**

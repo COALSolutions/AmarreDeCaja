@@ -34,6 +34,18 @@ export class AmarreCajaController {
         return this.repository.GetHistorialCaja(req.query);
     }
 
+    /**
+ * @description Obtiene las sucursales
+ * @author Antonio Guerra
+ * SP: [bpro].[SEL_SUCURSALES_SP]
+ * Url: http://{server}:{port}/GetSucursales
+ * Wiki: 
+ */
+    @Get('/GetSucursales')
+    GetSucursales(@Req() req: Request) {
+        return this.repository.GetSucursales(req.query);
+    }
+
     // ************ END Servicios GET ************
 
     // ************ Servicios POST ************

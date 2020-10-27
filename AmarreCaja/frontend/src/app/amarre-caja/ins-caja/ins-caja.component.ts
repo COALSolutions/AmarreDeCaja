@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
 import { IFileUpload } from 'app/interfaces';
 import { Datos } from 'app/models/datos.model';
 import { BaseService } from 'app/services/base.service';
-import { CoalService } from 'app/services/coal.service';
 import { ExcepcionesComponent } from 'app/utilerias/excepciones/excepciones.component';
-import { environment } from 'environments/environment';
+import { CoalService } from '../../services/coal.service';
 import {
   IGridOptions,
   IColumns,
@@ -31,18 +30,15 @@ import { AsignaBreadcrumb } from 'app/store/actions/permisos.actions';
 @Component({
   selector: 'app-ins-caja',
   templateUrl: './ins-caja.component.html',
-  styleUrls: ['./ins-caja.component.scss']
+  styleUrls: ['./ins-caja.component.scss'],
+  providers: [CoalService]
 })
 export class InsCajaComponent implements OnInit {
 
   spinner = false;
   breadcrumb;
-
   fechaHoy;
-
-  toppings = new FormControl();
-
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  sucursalesList = [];
 
   gridOptions: IGridOptions;
   columns: IColumns[];
@@ -64,6 +60,7 @@ export class InsCajaComponent implements OnInit {
     public dialog: MatDialog,
     private store: Store<AppState>,
     private baseService: BaseService,
+    private coalService: CoalService,
   ) {
     this.store.dispatch(new AsignaBreadcrumb({
       breadcrumb: null
@@ -84,6 +81,7 @@ export class InsCajaComponent implements OnInit {
       }));
     }
     this.Grid();
+    this.CargaSucursales();
   }
 
   Grid() {
@@ -173,6 +171,30 @@ export class InsCajaComponent implements OnInit {
     } catch (error) {
       this.Excepciones(error, 1);
     }
+  }
+
+  CargaSucursales() {
+    this.spinner = true;
+    this.coalService.getService('caja/GetSucursales').subscribe(
+      (res: any) => {
+        if (res.err) {
+          this.Excepciones(res.err, 4);
+        } else if (res.excepcion) {
+          this.Excepciones(res.excepcion, 3);
+        } else {
+          this.sucursalesList = res.recordsets[0];
+        }
+        this.spinner = false
+      }, (error: any) => {
+        this.Excepciones(error, 2);
+        this.spinner = false
+      }
+    )
+  }
+
+  CargaAnticipo(sucursal) {
+    console.log(sucursal);
+    
   }
 
   datosMessage(e) {
