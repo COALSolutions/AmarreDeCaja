@@ -46,6 +46,18 @@ export class AmarreCajaController {
         return this.repository.GetSucursales(req.query);
     }
 
+      /**
+ * @description Obtiene los anticipos
+ * @author Antonio Guerra
+ * SP: [bpro].[SEL_ANTICIPO_SP]
+ * Url: http://{server}:{port}/GetAnticipo
+ * Wiki: 
+ */
+@Get('/GetAnticipo')
+GetAnticipo(@Req() req: Request) {
+    return this.repository.GetAnticipo(req.query);
+}
+
     // ************ END Servicios GET ************
 
     // ************ Servicios POST ************

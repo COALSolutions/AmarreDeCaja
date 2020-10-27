@@ -161,7 +161,7 @@ export class LoginComponent implements OnInit {
         this.spinner = true;
         payload = {
           email: data + '@ga.com',
-          password: res[0][0].passwordBPRO
+          password: res.recordsets[0][0].passwordBPRO
         };
 
         await this.store.dispatch(new LogIn(payload));

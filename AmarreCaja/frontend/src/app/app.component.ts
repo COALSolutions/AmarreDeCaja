@@ -152,14 +152,12 @@ export class AppComponent implements OnInit, OnDestroy {
     //valida que sea reset de password
     private validateLogin() {
         const queryP = window.location.search.substring(1);
-        // const parsed_qs = this.parse_query_string(queryP);
         const arrayData = window.location.href.split('/');
         if (this.sessionInitializer.state) {
             this.getDataRedux();
         } else if (arrayData[3] === 'upd-password') {
             this.router.navigate([`upd-password/${arrayData[4]}`]);
         } else if (queryP.indexOf('usuarioBpro') >= 0) {
-            // this.router.navigate(['login']);
             this.router.navigateByUrl(`/login?${queryP}`);
         } else {
             this.router.navigate(['login']);

@@ -65,7 +65,7 @@ export class Datos {
                 return b;
             }
         });
-        breadcrumb.push({ label: 'Logo', url: breadcrumbs.logo[0] });
+        breadcrumb.push({ label: 'Logo', url: breadcrumbs.logo[0].path });
         if (parametros) {
             // Reemplazamos los parametros de la url con los valores recibidos en la variable parametros.
             parametros.forEach((parametro) => {

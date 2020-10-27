@@ -25,6 +25,10 @@ export class AmarreCajaRepository {
         return this.query.spExecute(query, "[bpro].[SEL_SUCURSALES_SP]")
     }
 
+    GetAnticipo(query: any): PromiseLike<{}> {
+        return this.query.spExecute(query, "[bpro].[SEL_ANTICIPO_SP]")
+    }
+
     // ************* TERMINA GET *************
 
     // ************ SERVICIOS POST ************

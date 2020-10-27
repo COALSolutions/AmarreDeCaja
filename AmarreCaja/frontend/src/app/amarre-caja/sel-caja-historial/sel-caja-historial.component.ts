@@ -176,6 +176,71 @@ export class SelCajaHistorialComponent implements OnInit {
           caption: 'Importes por contablizar',
           dataField: 'importe',
           format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
+        },
+        {
+          caption: 'Importes por contablizar',
+          dataField: 'importe',
+          format: TiposdeFormato.moneda
         }
       ];
 
