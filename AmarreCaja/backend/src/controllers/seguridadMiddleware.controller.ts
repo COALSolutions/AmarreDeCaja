@@ -17,7 +17,7 @@ export class SeguridadMiddleware implements ExpressMiddlewareInterface {
 
     use(request: any, response: any, next: any): void {
         if (request.headers != undefined && request.headers != null && request.headers.authorization != undefined && request.headers.authorization != null) {
-            let ruta = this.conf.seguridad.protocolo + "://" + this.conf.seguridad.host + ':' + this.conf.seguridad.port + '/api/auth/TokenValidation';
+            let ruta = this.conf.seguridad.protocolo + "://" + this.conf.seguridad.host + ':' + this.conf.seguridad.port + '/seguridad/TokenValidation';
             requestPost.post({
                 url: ruta,
                 headers: {
