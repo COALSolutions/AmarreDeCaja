@@ -161,7 +161,7 @@ export class LoginComponent implements OnInit {
         this.spinner = true;
         payload = {
           email: data + '@ga.com',
-          password: res[0][0].passwordBPRO
+          password: res.recordsets[0][0].passwordBPRO
         };
 
         await this.store.dispatch(new LogIn(payload));
@@ -173,7 +173,7 @@ export class LoginComponent implements OnInit {
 
   async GetServiceSeguridad(body?: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpClient.post(environment.seguridadUrl + 'api/user/userBPRO', body, { headers });
+    return this.httpClient.post(environment.seguridadUrl + 'seguridad/userBPRO', body, { headers });
   }
 
   async CodeAuth(code: any) {
