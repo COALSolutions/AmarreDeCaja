@@ -33,87 +33,94 @@
                 </span>
             </div>
         </div>
-        <div *ngIf="verGrid">
-            <div class='cardMarginBottom'>
-                <div class='row m-2 bordes'>
-                    <span>&nbsp;&nbsp;INGRESOS PENDIENTES POR DEPOSITAR DE DIAS ANTERIORES</span>
-                </div>
-
-                <dx-data-grid class='m-2' [dataSource]="anticiposAnteriores" [columns]="columns" [showBorders]="true">
-                </dx-data-grid>
-                <div class='row m-1 '>
-                    <span>SALDO CONTABLE INICIAL DE CAJA</span>
-                </div>
-            </div>
-            <hr>
-            <div class='cardMarginBottom'>
-                <div class='row m-2 bordes'>
-                    <span>&nbsp;&nbsp;INGRESOS PENDIENTES POR DEPOSITAR DEL DÍA DE HOY</span>
-                </div>
-                <dx-data-grid class='m-2' [dataSource]="anticipos" [columns]="columns" [showBorders]="true">
-                </dx-data-grid>
-                <div class='row m-1 '>
-                    <span>TOTAL INGRESOS CORTE DE CAJA</span>
+    </mat-card>
+    <div *ngIf="verGrid">
+        <mat-card class='cardMarginBottom'>
+            <div class='row m-2'>
+                <div fxLayout="row">
+                    <div class="selected-project">INGRESOS PENDIENTES POR DEPOSITAR DE DIAS ANTERIORES</div>
                 </div>
             </div>
 
-            <hr>
-            <div class='cardMarginBottom'>
-                <div class='bordes'>
-                    <div class='ml-3 mr-3'>
-                        <div class='row mt-4'>
-                            <div class='col-6'>
-                                <span>TOTAL INGRESADO HOY A BANCOS POR CAJA</span>
-                            </div>
-                            <div class='col-2'></div>
-                            <div class='col-2 text-center'> 35.497,95 </div>
-                            <div class='col-2'></div>
+            <dx-data-grid class='m-2' [dataSource]="anticiposAnteriores" [columns]="columns" [showBorders]="true">
+            </dx-data-grid>
+            <div class='row m-1 '>
+                <span>SALDO CONTABLE INICIAL DE CAJA</span>
+            </div>
+        </mat-card>
+
+        <mat-card class='cardMarginBottom'>
+            <div class='row m-2'>
+                <div fxLayout="row">
+                    <div class="selected-project">INGRESOS PENDIENTES POR DEPOSITAR DEL DÍA DE HOY</div>
+                </div>
+            </div>
+            <dx-data-grid class='m-2' [dataSource]="anticipos" [columns]="columns" [showBorders]="true">
+            </dx-data-grid>
+            <div class='row m-1 '>
+                <span>TOTAL INGRESOS CORTE DE CAJA</span>
+            </div>
+        </mat-card>
+
+        <mat-card class='cardMarginBottom'>
+            <div class=''>
+                <div class='ml-3 mr-3'>
+                    <div class='row mt-4 bordes'>
+                        <div class='col-6'>
+                            <span>TOTAL INGRESADO HOY A BANCOS POR CAJA</span>
                         </div>
-                        <div class='row'>
-                            <div class='col-6'>
-                                <span>SALDO TOTAL INGS POR DEPOSITAR</span>
-                            </div>
-                            <div class='col-2'></div>
-                            <div class='col-2'></div>
-                            <div class='col-2 text-center'> 201.306,93 </div>
+                        <div class='col-2'></div>
+                        <div class='col-2 text-center'> 35.497,95 </div>
+                        <div class='col-2'></div>
+                    </div>
+                    <div class='row bordes'>
+                        <div class='col-6'>
+                            <span>SALDO TOTAL INGS POR DEPOSITAR</span>
                         </div>
-                        <div class='row'>
-                            <div class='col-6'>
-                                <span>SALDO CONTABLE FINAL DE CAJA</span>
-                            </div>
-                            <div class='col-2 text-center'>135.405,96</div>
-                            <div class='col-2 text-center'>35.497,95</div>
-                            <div class='col-2 text-center'>201.306,93</div>
+                        <div class='col-2'></div>
+                        <div class='col-2'></div>
+                        <div class='col-2 text-center'> 201.306,93 </div>
+                    </div>
+                    <div class='row bordes'>
+                        <div class='col-6'>
+                            <span>SALDO CONTABLE FINAL DE CAJA</span>
                         </div>
-                        <div class='row mb-4'>
-                            <div class='col-6'>
-                                <span>DIFERENCIA CONTABLE DE CAJA</span>
-                            </div>
-                            <div class='col-2 text-center'>0.00</div>
-                            <div class='col-2 text-center'>0.00</div>
-                            <div class='col-2 text-center'>0.00</div>
+                        <div class='col-2 text-center'>135.405,96</div>
+                        <div class='col-2 text-center'>35.497,95</div>
+                        <div class='col-2 text-center'>201.306,93</div>
+                    </div>
+                    <div class='row mb-4 bordes'>
+                        <div class='col-6'>
+                            <span>DIFERENCIA CONTABLE DE CAJA</span>
                         </div>
+                        <div class='col-2 text-center'>0.00</div>
+                        <div class='col-2 text-center'>0.00</div>
+                        <div class='col-2 text-center'>0.00</div>
                     </div>
                 </div>
             </div>
+        </mat-card>
 
-            <div class='cardMarginBottom'>
-                <div class='row m-2 bordes'>
-                    <span>&nbsp;&nbsp;IMPORTES PENDIENTES POR CONTABILIZAR</span>
+        <mat-card class='cardMarginBottom'>
+            <div class='row m-2'>
+                <div fxLayout="row">
+                    <div class="selected-project">IMPORTES PENDIENTES POR CONTABILIZAR</div>
                 </div>
-                <dx-data-grid class='m-2' [dataSource]="pendientes" [columns]="columns" [showBorders]="true">
-                </dx-data-grid>
             </div>
+            <dx-data-grid class='m-2' [dataSource]="pendientes" [columns]="columns" [showBorders]="true">
+            </dx-data-grid>
+        </mat-card>
 
-            <div class='cardMarginBottom'>
-                <div class='row m-2'>
-                    <span>&nbsp;&nbsp;COMENTARIOS</span>
+        <mat-card class='cardMarginBottom'>
+            <div class='row m-2'>
+                <div fxLayout="row">
+                    <div class="selected-project">COMENTARIOS</div>
                 </div>
-                <textarea disabled class="form-control" rows="10"
-                    style="background-color: white; overflow:auto;resize:none;"> </textarea>
             </div>
-        </div>
-    </mat-card>
+            <textarea disabled class="form-control" rows="10"
+                style="background-color: white; overflow:auto;resize:none;"> </textarea>
+        </mat-card>
+    </div>
 
 
 </div>
