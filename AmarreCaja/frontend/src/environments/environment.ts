@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://localhost:4010/',
+  serviceUrl: 'http://54.68.19.8:4010/',
   seguridadUrl: 'http://54.68.19.8:4000/',
   aplicacionesId: 2,
   nombreAplicacion: 'AMARRECAJA',
