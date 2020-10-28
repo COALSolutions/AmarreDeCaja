@@ -13,7 +13,7 @@ export class SeguridadRepository {
         const database = 'Seguridad'
         const env: string = process.env.NODE_ENV || 'development';
         this.conf = (config as any)[env]; // ejemplo de llamada al confg.js
-        this.query = new Query(database);
+        this.query = new Query();
     }
 
     // ************ SERVICIOS GET ************

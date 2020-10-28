@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
 import { IFileUpload } from 'app/interfaces';
 import { Datos } from 'app/models/datos.model';
 import { BaseService } from 'app/services/base.service';
-import { CoalService } from 'app/services/coal.service';
 import { ExcepcionesComponent } from 'app/utilerias/excepciones/excepciones.component';
-import { environment } from 'environments/environment';
+import { CoalService } from '../../services/coal.service';
 import {
   IGridOptions,
   IColumns,
@@ -26,23 +25,24 @@ import * as moment from 'moment';
 import { Store } from '@ngrx/store';
 import { AppState } from 'app/store/app.states';
 import { AsignaBreadcrumb } from 'app/store/actions/permisos.actions';
+import { environment } from 'environments/environment';
 
 
 @Component({
   selector: 'app-ins-caja',
   templateUrl: './ins-caja.component.html',
-  styleUrls: ['./ins-caja.component.scss']
+  styleUrls: ['./ins-caja.component.scss'],
+  providers: [CoalService]
 })
 export class InsCajaComponent implements OnInit {
 
   spinner = false;
   breadcrumb;
-
   fechaHoy;
-
-  toppings = new FormControl();
-
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  sucursalesList = [];
+  anticipos = [];
+  anticiposAnteriores = [];
+  pendientes = [];
 
   gridOptions: IGridOptions;
   columns: IColumns[];
@@ -55,15 +55,16 @@ export class InsCajaComponent implements OnInit {
   Editing: IEditing;
   Columnchooser: IColumnchooser;
 
-  primerosDatos = [];
   columns2: { caption: string; dataField: string; }[];
   claveModulo = 'app-ins-caja';
   modulo: any;
+  verGrid = false;
 
   constructor(
     public dialog: MatDialog,
     private store: Store<AppState>,
     private baseService: BaseService,
+    private coalService: CoalService,
   ) {
     this.store.dispatch(new AsignaBreadcrumb({
       breadcrumb: null
@@ -84,6 +85,7 @@ export class InsCajaComponent implements OnInit {
       }));
     }
     this.Grid();
+    this.CargaSucursales();
   }
 
   Grid() {
@@ -95,31 +97,31 @@ export class InsCajaComponent implements OnInit {
       this.columns = [
         {
           caption: 'Recibo',
-          dataField: 'recibo',
+          dataField: 'MOV_IDDOCTO',
         },
         {
           caption: 'Fecha',
-          dataField: 'fecha'
+          dataField: 'MOV_FECHOPE'
         },
         {
           caption: 'Factura',
-          dataField: 'factura'
+          dataField: 'MOV_IDDOCTO'
         },
         {
           caption: 'Ingresos totales',
-          dataField: 'ingreso'
+          dataField: 'MOV_DEBE'
         },
         {
           caption: 'Ingresados hoy',
-          dataField: 'ingresados'
+          dataField: 'MOV_HABER'
         },
         {
           caption: 'Pendientes de ingresar',
-          dataField: 'pendites'
+          dataField: 'MOV_HABER'
         },
         {
           caption: 'Forma de pago',
-          dataField: 'formaPago'
+          dataField: 'MOV_CONCEPTO'
         }
       ];
 
@@ -175,13 +177,54 @@ export class InsCajaComponent implements OnInit {
     }
   }
 
-  datosMessage(e) {
+  CargaSucursales() {
+    this.spinner = true;
+    this.coalService.getService('caja/GetSucursales').subscribe(
+      (res: any) => {
+        if (res.err) {
+          this.Excepciones(res.err, 4);
+        } else if (res.excepcion) {
+          this.Excepciones(res.excepcion, 3);
+        } else {
+          this.sucursalesList = res.recordsets[0];
+        }
+        this.spinner = false
+      }, (error: any) => {
+        this.Excepciones(error, 2);
+        this.spinner = false
+      }
+    )
+  }
+
+  CargaAnticipo(sucursal) {
+    this.spinner = true;
+    this.verGrid = false;
+    let ambiente = 1
+  
+    if (environment.envName === 'develop') {
+      ambiente = 0
+    }
+    this.coalService.getService('caja/GetAnticipo?idSucursal=' + sucursal.suc_idsucursal + '&&idEmpresa=' + sucursal.emp_idempresa + '&&produccion=' + ambiente)
+      .subscribe(
+        (res: any) => {
+          if (res.err) {
+            this.Excepciones(res.err, 4);
+          } else if (res.excepcion) {
+            this.Excepciones(res.excepcion, 3);
+          } else {
+            this.anticipos = res.recordsets[0]
+            this.anticiposAnteriores = res.recordsets[1]
+            this.verGrid = true;
+          }
+          this.spinner = false
+        }, (error: any) => {
+          this.Excepciones(error, 2);
+          this.spinner = false
+        }
+      )
 
   }
 
-  receiveMessage(e) {
-
-  }
 
   Excepciones(pila, tipoExcepcion: number) {
     try {

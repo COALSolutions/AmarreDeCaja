@@ -5,7 +5,7 @@ import { Action } from '@ngrx/store';
  */
 export enum PermisosActionTypes {
     AsignaPermisos = '[Permisos] Asigna Permisos',
-    AsignaBreadcrumb = '[Permisos] Adigna Breadcrumb',
+    AsignaBreadcrumb = '[Permisos] Asigna Breadcrumb',
     EliminaPermisos = '[Permisos] Elimina Permisos',
 }
 

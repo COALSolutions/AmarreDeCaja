@@ -24,47 +24,48 @@
             <div class='col-sm-12 col-md-4 col-xl-4'>
                 <span>
                     <mat-form-field class="inputFullWide">
-                        <mat-select placeholder='Selecciona un distribuidor' [formControl]="toppings" multiple>
-                            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                        <mat-select placeholder='Selecciona una sucursal'
+                            (selectionChange)="CargaAnticipo($event.value)">
+                            <mat-option *ngFor="let sucursal of sucursalesList" [value]="sucursal">
+                                {{sucursal.suc_nombre}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </span>
             </div>
         </div>
-
-        <div class='cardMarginBottom'>
-            <div class='row m-2 bordes'>
-                <span>&nbsp;&nbsp;INGRESOS PENDIENTES POR DEPOSITAR DE DIAS ANTERIORES</span>
+    </mat-card>
+    <div *ngIf="verGrid">
+        <mat-card class='cardMarginBottom'>
+            <div class='row m-2'>
+                <div fxLayout="row">
+                    <div class="selected-project">INGRESOS PENDIENTES POR DEPOSITAR DE DIAS ANTERIORES</div>
+                </div>
             </div>
-            <!-- <app-grid-component [datos]="primerosDatos" [columns]="columns" [exportExcel]="exportExcel"
-                [columnHiding]="columnHiding" [Checkbox]="Checkbox" [Editing]="Editing" [Columnchooser]="Columnchooser"
-                [searchPanel]="searchPanel" [scroll]="scroll" (messageEvent)="receiveMessage($event)"
-                (datosevent)='datosMessage($event)' [toolbar]="toolbar">
-            </app-grid-component> -->
 
-            <dx-data-grid class='m-2' [dataSource]="primerosDatos" [columns]="columns" [showBorders]="true">
+            <dx-data-grid class='m-2' [dataSource]="anticiposAnteriores" [columns]="columns" [showBorders]="true">
             </dx-data-grid>
             <div class='row m-1 '>
                 <span>SALDO CONTABLE INICIAL DE CAJA</span>
             </div>
-        </div>
-        <hr>
-        <div class='cardMarginBottom'>
-            <div class='row m-2 bordes'>
-                <span>&nbsp;&nbsp;INGRESOS PENDIENTES POR DEPOSITAR DEL DÍA DE HOY</span>
+        </mat-card>
+
+        <mat-card class='cardMarginBottom'>
+            <div class='row m-2'>
+                <div fxLayout="row">
+                    <div class="selected-project">INGRESOS PENDIENTES POR DEPOSITAR DEL DÍA DE HOY</div>
+                </div>
             </div>
-            <dx-data-grid class='m-2' [dataSource]="primerosDatos" [columns]="columns" [showBorders]="true">
+            <dx-data-grid class='m-2' [dataSource]="anticipos" [columns]="columns" [showBorders]="true">
             </dx-data-grid>
             <div class='row m-1 '>
                 <span>TOTAL INGRESOS CORTE DE CAJA</span>
             </div>
-        </div>
+        </mat-card>
 
-        <hr>
-        <div class='cardMarginBottom'>
-            <div class='bordes'>
+        <mat-card class='cardMarginBottom'>
+            <div class=''>
                 <div class='ml-3 mr-3'>
-                    <div class='row mt-4'>
+                    <div class='row mt-4 bordes'>
                         <div class='col-6'>
                             <span>TOTAL INGRESADO HOY A BANCOS POR CAJA</span>
                         </div>
@@ -72,7 +73,7 @@
                         <div class='col-2 text-center'> 35.497,95 </div>
                         <div class='col-2'></div>
                     </div>
-                    <div class='row'>
+                    <div class='row bordes'>
                         <div class='col-6'>
                             <span>SALDO TOTAL INGS POR DEPOSITAR</span>
                         </div>
@@ -80,7 +81,7 @@
                         <div class='col-2'></div>
                         <div class='col-2 text-center'> 201.306,93 </div>
                     </div>
-                    <div class='row'>
+                    <div class='row bordes'>
                         <div class='col-6'>
                             <span>SALDO CONTABLE FINAL DE CAJA</span>
                         </div>
@@ -88,7 +89,7 @@
                         <div class='col-2 text-center'>35.497,95</div>
                         <div class='col-2 text-center'>201.306,93</div>
                     </div>
-                    <div class='row mb-4'>
+                    <div class='row mb-4 bordes'>
                         <div class='col-6'>
                             <span>DIFERENCIA CONTABLE DE CAJA</span>
                         </div>
@@ -98,24 +99,28 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </mat-card>
 
-        <div class='cardMarginBottom'>
-            <div class='row m-2 bordes'>
-                <span>&nbsp;&nbsp;IMPORTES PENDIENTES POR CONTABILIZAR</span>
-            </div>
-            <dx-data-grid class='m-2' [dataSource]="primerosDatos" [columns]="columns" [showBorders]="true">
-            </dx-data-grid>
-        </div>
-
-        <div class='cardMarginBottom'>
+        <mat-card class='cardMarginBottom'>
             <div class='row m-2'>
-                <span>&nbsp;&nbsp;COMENTARIOS</span>
+                <div fxLayout="row">
+                    <div class="selected-project">IMPORTES PENDIENTES POR CONTABILIZAR</div>
+                </div>
+            </div>
+            <dx-data-grid class='m-2' [dataSource]="pendientes" [columns]="columns" [showBorders]="true">
+            </dx-data-grid>
+        </mat-card>
+
+        <mat-card class='cardMarginBottom'>
+            <div class='row m-2'>
+                <div fxLayout="row">
+                    <div class="selected-project">COMENTARIOS</div>
+                </div>
             </div>
             <textarea disabled class="form-control" rows="10"
                 style="background-color: white; overflow:auto;resize:none;"> </textarea>
-        </div>
-    </mat-card>
+        </mat-card>
+    </div>
 
 
 </div>
